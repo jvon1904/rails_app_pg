@@ -81,9 +81,6 @@ test:
 #
 production:
   <<: *default
-  # database: pg_app_production
-  database: d2f83p3epvga18
-  # username: pg_app
-  username: igzqctmuyjxgdc
-  # password: <%= ENV['PG_APP_DATABASE_PASSWORD'] %>
-  password: 3efcb8a52950a82c88d2e42b2cb7a9a0a77b86bd81db71d0acfdde1a107239b9
+  database: pg_app_production
+  username: pg_app
+  password: <%= ENV['PG_APP_DATABASE_PASSWORD'] %>
