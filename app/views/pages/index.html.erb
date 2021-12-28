@@ -1,0 +1,20 @@
+<h1>Blog Pages</h1>
+hello world!
+<% @pages.each do |p| %>
+    <h2> <%= link_to p.title, p %> </h2>
+        <table>
+            <tr>
+                <th>Content</th>
+                <th>Slug</th>
+            </tr>
+            <tr>
+                <td><%=p.body%></td>
+                <td><%=p.slug%></td>
+            </tr>
+        </table>
+<% end %>
+
+<%= link_to "Create New Page", new_page_path %>
+    <% if @pages.empty? %>
+        <%= "not found!" %>
+    <% end %>

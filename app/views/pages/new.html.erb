@@ -1,0 +1,11 @@
+<h1>Create a new page!</h1>
+    <%= form_with model: @page do |form| %>
+        <%= form.label :title, "Title" %>
+        <%= form.text_field :title %>
+        <%= form.label :body, "Body" %>
+        <%= form.text_field :body %>
+        <%= form.submit 'Do it!' %>
+
+    <% end %>
+
+    <%= link_to "Back", pages_path %>
