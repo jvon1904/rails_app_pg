@@ -2,10 +2,13 @@ class PagesController < ApplicationController
     before_action :set_page, only: %i[ show edit update destroy ]
 
     def index
-        @pages = Page.all
+        @pages = Page.all    
     end
 
     def show
+    # rescue ActiveRecord::RecordNotFound
+    #     flash[:notice] = "We couldn't find that Post."
+    #     redirect_to pages_url
     end
 
     def new
