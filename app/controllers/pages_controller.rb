@@ -6,9 +6,6 @@ class PagesController < ApplicationController
     end
 
     def show
-    # rescue ActiveRecord::RecordNotFound
-    #     flash[:notice] = "We couldn't find that Post."
-    #     redirect_to pages_url
     end
 
     def new
@@ -47,6 +44,10 @@ class PagesController < ApplicationController
     
     def set_page 
         @page = Page.find_by_slug(params[:id])
+        if @page.nil?
+            flash[:notice] = "We couldn't find that Post."
+            redirect_to pages_url
+        end
     end
 
     def page_params 
