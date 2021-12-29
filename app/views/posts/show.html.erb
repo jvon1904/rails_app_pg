@@ -10,16 +10,13 @@
   <%= @post.body %>
 </p>
 
-<p>
-  <strong>Comments:</strong>
-  <ul>
-    <% @comments.each do |c| %>
-      <%= link_to comment_path(c) do %>
-        <li><b><%= c.name %></b>: <%= c.body %></li>
-      <% end %>
-    <% end %>
-  </ul>
-</p>
+<%= will_paginate @comments %>
+<div style="display:flex;flex-direction:row;align-items:flex-start">
+<% @comments.each do |c| %>
+  <%= render partial: "comments/comment", locals: {stupid: c, post: @post} %>
+<% end %>
+</div>
+<%= will_paginate @comments %>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

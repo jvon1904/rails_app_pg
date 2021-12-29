@@ -1,25 +1,24 @@
 class CommentsController < ApplicationController
-  before_action :set_post, except: :show
+
 
   def new
-    @comment = @post.comments.new
-  end
-
-  def show
-    @comment = Comment.find(params[:id])
-    @post = @comment.post
+    @comment = set_post.comments.new
   end
 
   def create
-    @comment = @post.comments.new(comment_params)
+    @comment = set_post.comments.new(comment_params)
     if @comment.save
-      redirect_to @post
+      redirect_to set_post
     else 
       render plain: "ya done messed up bruthuh"
     end
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @comment.destroy
+    redirect_to @post
   end
 
   private
@@ -27,6 +26,7 @@ class CommentsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
 
   def comment_params
     params.require(:comment).permit(:name, :body)

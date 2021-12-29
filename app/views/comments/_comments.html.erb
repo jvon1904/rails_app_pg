@@ -1,0 +1,13 @@
+
+<p>
+<strong>Comments:</strong>
+<ul>
+    <%= will_paginate @comments %>
+  <% @comments.each do |c| %>
+    <%= render partial: "comments/comment", locals: { c: @comment } %>
+  <% end %>
+</ul>
+</p>
+
+
+
