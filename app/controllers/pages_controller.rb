@@ -6,6 +6,8 @@ class PagesController < ApplicationController
     end
 
     def show
+        @comment = Post.first.comments.first
+        @comments = Post.first.comments
     end
 
     def new

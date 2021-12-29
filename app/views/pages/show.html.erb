@@ -1,5 +1,13 @@
 <h1><%= @page.title %></h1>
 <p><%= @page.body %></p>
+<h1><%= @comment.body %></h1>
+<ul>
+    <% @comments.each do |c| %>
+        <li> <%= c.body %> </li>
+    <% end %>
+</ul>
+<h1 style="color:teal"> <%= @comment.post.title %>, <%= @comment.post.body %></h1>
+    
 <%= link_to "Edit", edit_page_path(@page) %> | 
 <%= link_to "Back", pages_path %> | 
 <%= link_to "Delete", @page, method: :delete, data: {confirm: "You sure about dat!?"} %>

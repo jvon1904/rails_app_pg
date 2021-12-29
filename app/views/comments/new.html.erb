@@ -1,0 +1,11 @@
+<h1>Create a new comment!</h1>
+    <%= form_with model: @comment do |form| %>
+        <%= form.label :name, "Name" %>
+        <%= form.text_field :name %>
+        <%= form.label :body, "Body" %>
+        <%= form.text_field :body %>
+        <%= form.submit 'Do it!' %>
+
+    <% end %>
+
+    <%= link_to "Back", @post %>

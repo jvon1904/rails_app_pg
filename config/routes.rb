@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/create'
   resources :posts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'welcome#index'
@@ -10,5 +12,14 @@ Rails.application.routes.draw do
   # patch '/pages/:id', to: "pages#update", as: 'update'
   # delete '/pages/:id', to: "pages#destroy"
   resources :pages
+
+  get '/posts/:id/comments/new', to: 'comments#new', as: 'new_comment'
+  get '/posts/:id/comments', to: 'comments#index', as: 'comments'
+  get '/posts/:id/comments/:id', to: 'comments#show', as: 'comment'
+  post '/posts/:id/comments', to: 'comments#create'
+  get '/posts/:id/comments/:id/edit', to: 'comments#edit', as: 'edit_comment'
+  patch '/posts/:id/comments/:id', to: 'comments#update'
+  delete 'posts/:id/comments/:id', to: 'comments#destroy'
+
 
 end
