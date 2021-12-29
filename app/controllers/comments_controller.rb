@@ -1,31 +1,26 @@
 class CommentsController < ApplicationController
 
 
-  def new
-    @comment = set_post.comments.new
-  end
-
   def create
-    @comment = set_post.comments.new(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(comment_params)
+    
     if @comment.save
-      redirect_to set_post
+      redirect_to @post, anchor: :back
     else 
       render plain: "ya done messed up bruthuh"
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @post = @comment.post
+    
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to @post
   end
 
   private
-  
-  def set_post
-    @post = Post.find(params[:id])
-  end
 
 
   def comment_params

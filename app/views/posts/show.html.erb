@@ -13,12 +13,12 @@
 <%= will_paginate @comments %>
 <div style="display:flex;flex-direction:row;align-items:flex-start">
 <% @comments.each do |c| %>
-  <%= render partial: "comments/comment", locals: {stupid: c, post: @post} %>
+  <%= render partial: "comments/comment", locals: {comment: c, post: @post} %>
 <% end %>
 </div>
 <%= will_paginate @comments %>
-
+<h3>Add a Comment</h3>
+<%= render partial: 'comments/form', locals: { comment: @post.comments.new } %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Add Comment', new_comment_path %> |
 <%= link_to 'Back', posts_path %>

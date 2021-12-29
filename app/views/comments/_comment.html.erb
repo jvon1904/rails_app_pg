@@ -1,6 +1,7 @@
 <div style="border:1px solid black; margin:1.5rem; padding: 1.5rem; border-radius: 5px; background-color: #000011; color: #EEEEFF; max-width: 200px; display: inline-block">
-<h2><%= stupid.name %> said</h2>
-<p><%= stupid.body %></p>
-<em><small><%= stupid.updated_at.strftime('%B %d, %Y') %></small></em>
-<%= link_to 'Delete', stupid, method: :delete %>
+<h2><%= comment.name %> said</h2>
+<p><%= comment.body %></p>
+<em><small><%= comment.updated_at.strftime('%B %d, %Y') %></small></em>
+
+<%= link_to 'Delete', [@post, comment], method: :delete %>
 </div>
