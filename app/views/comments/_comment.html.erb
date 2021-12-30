@@ -1,7 +1,15 @@
 <div style="border:1px solid black; margin:1.5rem; padding: 1.5rem; border-radius: 5px; background-color: #000011; color: #EEEEFF; max-width: 200px; display: inline-block">
-<h2><%= comment.name %> said</h2>
+<h5><%= comment.name %> said</h5>
 <p><%= comment.body %></p>
 <em><small><%= comment.updated_at.strftime('%B %d, %Y') %></small></em>
-
+<div class='comment-admin'>
+    <a class="edit-link">Edit</a>
+    <div id="edit-comment-form" class="hide">
+        <h5>Edit Comment</h5>
+    <%= render partial: 'comments/form', locals: { post: @post, comment: comment } %>
+</div>
+</div>
 <%= link_to 'Delete', [@post, comment], method: :delete %>
 </div>
+
+

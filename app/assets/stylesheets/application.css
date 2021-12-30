@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: initial;
+}
+
+.edit-link{
+    color: #EEEEFF;
+    
+}
+.edit-link:hover{
+    color: #EE11FF;
+    cursor: pointer;
+
+}

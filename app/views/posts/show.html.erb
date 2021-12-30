@@ -11,14 +11,28 @@
 </p>
 
 <%= will_paginate @comments %>
+
 <div style="display:flex;flex-direction:row;align-items:flex-start">
-<% @comments.each do |c| %>
-  <%= render partial: "comments/comment", locals: {comment: c, post: @post} %>
-<% end %>
+
+<%= render partial: 'comments/comment', collection: @comments %>
+
 </div>
+
 <%= will_paginate @comments %>
+
+<div id="edit-comment-form" class="hide">
+<h3>Edit Comment</h3>
+    <%= render partial: 'form', locals: { post: @post } %>
+</div>
+
 <h3>Add a Comment</h3>
-<%= render partial: 'comments/form', locals: { comment: @post.comments.new } %>
+
+<%# render partial: 'comments/form', locals: { comment: @post.comments.new } %>
+
+<%= render 'comments/form', comment: @comment %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
+
 <%= link_to 'Back', posts_path %>
+
+<%= javascript_pack_tag 'comment-form' %>
